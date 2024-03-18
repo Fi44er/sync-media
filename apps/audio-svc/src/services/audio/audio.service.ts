@@ -2,7 +2,6 @@ import { BadRequestException, Injectable, InternalServerErrorException } from '@
 import { PrismaService } from '../prisma/prisma.service';
 import { join } from 'path';
 import { writeFile } from 'fs';
-import { Response } from 'express';
 
 @Injectable()
 export class AudioService {
@@ -30,6 +29,5 @@ export class AudioService {
                 roomId: 1
             },
         });
-
     }
 }
