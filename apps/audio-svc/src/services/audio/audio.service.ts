@@ -8,7 +8,7 @@ import { Response } from 'express';
 export class AudioService {
     constructor(private readonly prismaService: PrismaService) {}
 
-    async uploadAudio(audio: Express.Multer.File, res: Response) {
+    async uploadAudio(audio: Express.Multer.File) {
         const uploadFolder = join(__dirname, '../../../uploads')
 
         if (!audio.originalname.match(/\.(mp3|wav)$/)) {
@@ -24,13 +24,12 @@ export class AudioService {
                 }
             })
         })
-        this.prismaService.audio.create({
+        return this.prismaService.audio.create({
             data: {
                 name: newname,
                 roomId: 1
             },
         });
-        
-        return res.sendFile(newname, { root: 'uploads' });
+
     }
 }
