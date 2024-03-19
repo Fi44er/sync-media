@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
-import { PrismaModule } from './services/prisma/prisma.module';
-import { AudioModule } from './services/audio/audio.module';
-
+import { PrismaModule } from './prisma/prisma.module';
+import { AudioSvcController } from './audio-svc.controller';
+import { AudioSvcService } from './audio-svc.service';
+import { WebsocketGatewayModule } from './websocket-gateway/websocket-gateway.module';
 
 @Module({
-  imports: [AudioModule],
-  controllers: [],
-  providers: [],
+  imports: [PrismaModule, WebsocketGatewayModule],
+  controllers: [AudioSvcController],
+  providers: [AudioSvcService],
 })
 export class AudioSvcModule {}

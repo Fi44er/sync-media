@@ -1,10 +1,10 @@
 import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
-import { PrismaService } from '../prisma/prisma.service';
+import { PrismaService } from './prisma/prisma.service';
 import { join } from 'path';
 import { writeFile } from 'fs';
 
 @Injectable()
-export class AudioService {
+export class AudioSvcService {
     constructor(private readonly prismaService: PrismaService) {}
 
     async uploadAudio(audio: Express.Multer.File) {
